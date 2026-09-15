@@ -30,7 +30,7 @@
 2. 說明 APISIX 的 plugin——opa plugin 和 OPA service 的合作方式
 3. 說明 APISIX 的 plugin——traffic-split plugin
 4. 驗證 QA 人員可以透過帶特定的 HTTP Header，精準被導向 Canary 版本
-5. 讓內部員工不用手動帶 Header，改用 Cookie 就能自然被導向 Canary 版本（狗食測試）
+5. 讓內部員工不用手動帶 Header，改用 Cookie 就能自然被導向 Canary 版本（內部驗證測試，Dogfooding）
 6. 提出一個問題：跨服務呼叫時，金絲雀身份會遺失
 7. 說明 OTel Agent 如何利用 HTTP Header traceparent 和 baggage 來標記 request，解決第 6 點的問題，讓我們可以做到精密監控
 8. 引入 middle-app，串出一條跨服務的呼叫鏈，驗證 baggage 真的能跨服務存活
