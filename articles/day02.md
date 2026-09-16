@@ -1,3 +1,5 @@
+# Day02：建立 CI/CD pipeline
+
 ## 今天的工作
 
 1. 我們要在 GitHub 建立一個 2 個 git repo，一個用來放 demo-app，另一個用來放 ArgoCD 需要的設定。
