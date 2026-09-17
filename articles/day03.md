@@ -53,7 +53,7 @@ APISIX 的部署包含兩個組件：
 
 這個專案的 APISIX 是用 git commit 觸發部署：把設定檔推進 Config Repo，ArgoCD 偵測到變更後自動同步、幫你執行 `helm install`。
 
-需要的檔案，全部放在 `enterprise-gitops-config` 這個 repo：
+需要的檔案，全部放在 `config` 這個 repo：
 
 | 檔案 | 路徑 | 內容 |
 | --- | --- | --- |
@@ -63,12 +63,12 @@ APISIX 的部署包含兩個組件：
 
 ## 提醒
 
-- 這裡的 Etcd 設定了 `replicaCount: 3`，但為了省錢，把 `podAntiAffinityPreset` 從正式環境該用的 `hard` 降成 `soft`，nodeSelector 又釘死在只有 1 台節點的 system-pool——3 個 Etcd Pod 並沒有真的分散在 3 個 node 裡，全部擠在同一台機器上。
+- 這裡的 Etcd 設定了 `replicaCount: 3`，但為了省錢，把 `podAntiAffinityPreset` 從正式環境該用的 `hard` 降成 `soft`，3 個 Etcd Pod 並沒有強置分散在 3 個 node 裡，在實驗初期可以開一個 work node 就足夠。
 
 ## 參考資料
 
-官方文件：[Configure a Service to use a network load balancer](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer)
+- 官方文件：[Configure a Service to use a network load balancer](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer)
 
-APISIX 官方 README「Full Dynamic」章節，原文：「Hot Updates And Hot Plugins: Continuously updates its configurations and plugins without restarts!」——[apache/apisix README](https://github.com/apache/apisix/blob/master/README.md)
+- APISIX 官方 README「Full Dynamic」章節，[apache/apisix README](https://github.com/apache/apisix/blob/master/README.md)
 
-APISIX 官方 Admin API 文件，列出 Route、Service、Upstream、SSL、Consumer 等可透過 API 管理的資源類型——[Admin API](https://apisix.apache.org/docs/apisix/admin-api/)
+- APISIX 官方 Admin API 文件，列出 Route、Service、Upstream、SSL、Consumer 等可透過 API 管理的資源類型——[Admin API](https://apisix.apache.org/docs/apisix/admin-api/)
