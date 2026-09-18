@@ -3,7 +3,7 @@
 ## 今天的工作
 
 1. 介紹 APISIX
-2. LoadBalancer 如何與 APISIX 一起工作
+2. load balancer 如何與 APISIX 一起工作
 3. 佈署 APISIX
 
 ## APISIX 是什麼？
