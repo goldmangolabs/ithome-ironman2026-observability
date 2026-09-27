@@ -6,7 +6,7 @@
 2. 引入 middle-app：一支專門用來證明「Baggage 真的能跨服務存活」的下游服務
 3. 說明我們打算怎麼驗證、預期會看到什麼結果
 
-Day12 結尾留了一個缺口：「demo-app 目前還沒有真的呼叫過任何下游服務，這個標籤現在還沒有真正的第二跳可以驗證」。今天要把這個缺口補上。我們會設定 OPA service 的 Rego rule，把 baggage 的相關訊息返回給 APISIX 的 `opa` plugin，讓它替 request 加上 `baggage` 的 header。
+Day12 結尾留了一個缺口：「demo-app 目前還沒有真的呼叫過任何下游服務，這個標籤現在還沒有真正的第二跳可以驗證」。今天要把這個缺口補上。我們會設定 OPA service 的 Rego rule，把 baggage 的相關訊息返回給 APISIX 的 `opa` plugin，讓它替 request 加上 `baggage` 的 header。這個值之後會由 demo-app 自己發出的 HTTP request，一路帶到 `middle-app`。
 
 ## OPA 怎麼算出 baggage
 
