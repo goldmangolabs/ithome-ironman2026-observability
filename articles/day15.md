@@ -211,7 +211,6 @@ spec:
       - CreateNamespace=true
 ```
 
-- `source.path` 目前指向的快照路徑，不是對應到今天（Day15）這個時間點——延續 demo-app 一路沿用的 dayNN 快照慣例，每個資料夾都是「內容範圍限定在當天」的完整快照，`source.path` 平常會指向專案目前最新進度所在的那個快照。目前會落在比 Day15 更後面，是因為 Day18 開始 traces 改接 Tempo，`otel-gateway` 的內容跟著換版，較新的快照才是包含這個變動後的完整版本，不代表 Day15 當天寫的這份設定本身有問題，只是舊的快照在被取代之後，通常會被當成孤兒檔案清掉，只保留最新的完整快照。
 - `destination.namespace` 設成 `<namespace>`，OTel Collector Agent／Gateway 跟 demo-app、APISIX 部署在同一個 namespace。
 - `syncPolicy.automated` 開啟 `prune`／`selfHeal`：git 裡刪掉的資源，ArgoCD 會自動清掉；叢集裡有人手動改動跟 git 宣告的狀態不一致，也會被自動蓋回去。`syncOptions` 的 `CreateNamespace=true`，讓 ArgoCD 在套用資源前，先確保 `<namespace>` 這個 namespace 存在。
 
