@@ -7,10 +7,6 @@
 
 ## 一筆 Canary 流量，到故障，到自動修復
 
-下面這張圖，是整個故事的全貌：
-
-![Day29 架構圖](架構圖/day29.png)
-
 ### ① 正常流量路徑（Day04-14、Day23）
 
 Client 打進 APISIX，APISIX 透過 `opa` plugin 查詢 OPA——這一步圖上標了一個 Ⓐ，後面會用到。OPA 判斷這筆請求該不該進 Canary，靠的是兩層機制 OR 合併的結果：`x-canary` Header／`canary=true` Cookie 的精確比對（Day08-11），或是 `x-user-id` 雜湊取餘數跟 `weight` 比大小（Day23）。判斷完回傳 `x-route-to`，APISIX 的 `traffic-split` 照這個值把請求送進 Stable 或 Canary 的 upstream。
